@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Marca;
+
 class MarcaController extends Controller
 {
     /**
@@ -11,7 +12,7 @@ class MarcaController extends Controller
      */
     public function index()
     {
-        return response()->json(Marca::all);
+        return response()->json(Marca::all());
     }
 
     /**
@@ -19,7 +20,14 @@ class MarcaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre'=>'required'
+        ]);
+        $marca = Marca::create($request->all());
+        return response()->json([
+            'mensaje'=>'marca creada exitosamente',
+            'marca' => $marca
+        ], 201);
     }
 
     /**
