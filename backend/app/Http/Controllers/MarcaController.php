@@ -78,6 +78,17 @@ class MarcaController extends Controller
      */
     public function destroy(string $id)
     {
-        
+        $marca = Marca::find($id);
+        if(!$marca){
+            return response()->json(
+            [
+                'mensaje'=>'marca no encontrada'
+            ],404);
+        }
+        $marca->delete();
+
+        return response()->json([
+            'mensaje' => 'marca eliminada exitosamente'
+        ], 201);
     }
 }
