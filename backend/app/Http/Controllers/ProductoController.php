@@ -21,7 +21,7 @@ class ProductoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'id'=>'required',
+            'idmarca'=>'required',
             'nombre'=>'required',
             'precio'=>'required'
         ]);

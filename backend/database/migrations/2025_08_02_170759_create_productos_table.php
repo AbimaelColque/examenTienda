@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('productos', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('idmarca')->unsigned();
-            $table->foreign('idmarca')->references('id')->on('marcas');
+            $table->foreign('idmarca')->references('id')->on('marcas')->onDelete('cascade');
             $table->String('nombre',100);
             $table->String('precio',30);
             $table->timestamps();
