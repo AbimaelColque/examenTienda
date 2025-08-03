@@ -20,7 +20,16 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id'=>'required',
+            'nombre'=>'required',
+            'precio'=>'required'
+        ]);
+        $producto = Producto::create($request->all());
+        return response()->json([
+            'mensaje'=>'producto creado exitosamente',
+            'producto' => $producto
+        ], 201);
     }
 
     /**
@@ -28,7 +37,17 @@ class ProductoController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $producto = Producto::find($id);
+        if(!$producto){
+            return response()->json(
+            [
+                'mensaje' => 'producto no encontrado'
+            ],404);
+        }
+        return response()->json([
+            'mensaje' => 'producto encontrado exitosamente',
+            'producto' => $producto
+        ], 200);
     }
 
     /**
@@ -36,7 +55,26 @@ class ProductoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'idmarca'=>'required',
+            'nombre'=>'required',
+            'precio'=>'required'
+        ]);
+
+        $producto = Producto::find($id);
+        if(!$producto){
+            return response()->json(
+            [
+                'mensaje'=>'producto no encontrado'
+            ],404);
+        }
+
+        $producto->update($request->all());
+
+        return response()->json([
+            'mensaje' => 'producto actualizado exitosamente',
+            'producto' => $producto
+        ], 201);
     }
 
     /**
@@ -44,6 +82,17 @@ class ProductoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $producto = Producto::find($id);
+        if(!$producto){
+            return response()->json(
+            [
+                'mensaje'=>'producto no encontrado'
+            ],404);
+        }
+        $producto->delete();
+
+        return response()->json([
+            'mensaje' => 'producto eliminado exitosamente'
+        ], 201);
     }
 }

@@ -15,28 +15,28 @@ class ProductoSeeder extends Seeder
     {
         DB::table('productos')->insert([
             [
-                'id'=>'1',
+                'idmarca'=>'1',
                 'nombre'=>'laptop',
                 'precio'=>'100$',
                 'created_at'=>now(),
                 'updated_at'=>now()
             ],
             [
-                'id'=>'1',
+                'idmarca'=>'1',
                 'nombre'=>'laptop gamer',
                 'precio'=>'200$',
                 'created_at'=>now(),
                 'updated_at'=>now()
             ],
             [
-                'id'=>'2',
+                'idmarca'=>'2',
                 'nombre'=>'laptop',
                 'precio'=>'100$',
                 'created_at'=>now(),
                 'updated_at'=>now()
             ],
             [
-                'id'=>'2',
+                'idmarca'=>'2',
                 'nombre'=>'laptop gamer',
                 'precio'=>'200$',
                 'created_at'=>now(),
