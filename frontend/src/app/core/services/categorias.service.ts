@@ -14,7 +14,7 @@ export class CategoriasService {
   }
 
   listarCategorias(){
-    return this.http.get<any[]>(`${this.base}/cateegorias`);
+    return this.http.get<any[]>(`${this.base}/marcas`);
   }
 
 }
