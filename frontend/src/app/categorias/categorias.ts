@@ -77,5 +77,19 @@ export class Categorias {
   }
 
   
-  
+  eliminarCategoria(categoria: any) {
+    const confirmacion = confirm(`¿Estás seguro de eliminar la categoría "${categoria.nombre}"?`);
+    
+    if (confirmacion) {
+      this.categoriaService.eliminarCategoria(categoria.id).subscribe({
+        next: (response) => {
+          console.log('Categoría eliminada:', response);
+          this.listarCategorias();
+        },
+        error: (error) => {
+          console.error('Error al eliminar:', error);
+          alert('Error al eliminar la categoría');
+        }
+      });
+    }}
 }
