@@ -17,4 +17,7 @@ export class CategoriasService {
     return this.http.get<any[]>(`${this.base}/marcas`);
   }
 
+  actualizarCategoria(id: number, categoria: any) {
+    return this.http.put(`${this.base}/marcas/${id}`, categoria);
+  }
 }
