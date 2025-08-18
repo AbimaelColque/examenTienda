@@ -1,5 +1,14 @@
 <h1>Lista de Categorias</h1>
-
+<!-- Formulario para agregar nueva categoría -->
+  <div class="agregar-categoria">
+    <input 
+      type="text" 
+      [(ngModel)]="nuevaCategoria" 
+      placeholder="Nombre de la nueva categoría"
+      (keyup.enter)="agregarCategoria()"
+    >
+    <button (click)="agregarCategoria()">Agregar</button>
+  </div>
 <table class="table">
 
   <thead>
@@ -28,6 +37,7 @@
 
         <td>
           <button (click)="editarCategoria(item)">Editar</button>
+          <button (click)="eliminarCategoria(item)" class="eliminar">Eliminar</button>
         </td>
 
       </tr>
